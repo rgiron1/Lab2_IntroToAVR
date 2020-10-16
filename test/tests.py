@@ -19,8 +19,9 @@ tests = [ {'description': 'PINA: 0x01 => PORTC: 0x03',
     'expected': [('PORTC',0x03)],
     },
 	{'description': 'PINA: 0x02 => PORTC: 0x02',
-	'steps': [ {'inputs': [('PINA',0x02)], 'iterations': 5}]
+	'steps': [ {'inputs': [('PINA',0x02)], 'iterations': 5}],
 	'expected' : [('PORTC',0x02)],
+	},
     ]
 
 # Optionally you can add a set of "watch" variables these need to be global or static and may need
