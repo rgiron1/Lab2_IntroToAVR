@@ -15,37 +15,21 @@
 int main(void) {
     /* Insert DDR and PORT initializations */
 	DDRA = 0x00; PORTA = 0xFF;
-	DDRB = 0x00; PORTA = 0xFF;
-	DDRC = 0x00; PORTC = 0xFF;
-	DDRD = 0xFF; PORTD = 0x00;
-	
+	DDRC = 0xCC; PORTC = 0xFF;
+	unsigned char cntavail = 0x00;
     /* Insert your solution below */
     while (1) {
-	unsigned char tempA = PINA;
-	unsigned char tempB = PINB;
-	unsigned char tempC = PINC;
-	unsigned char tempD = 0x00;
-	unsigned char total;
-	unsigned char max;
-	unsigned char min;
-	unsigned char diff;
-	total = tempA + tempB + tempC;
-	if(total > 140){
-	tempD = 0x01;
+	cntavail = 0x04;
+	if(cntavail & 0x01){
+		cntavail--;
+	} else if(cntavail & 0x02){
+		cntavail--;
+	} else if(cntavail & 0x04){
+		cntavail--;
+	} else if(cntavail & 0x08){
+		cntavail--;
 	}
-	if(tempA > tempC){
-	max = tempA;
-	min = tempC;
-	}else{
-	max = tempC;
-	min = tempA;
-	} 
-	diff = max - min;
-	if((diff) > 80 ){
-	tempD = 0x02;
-	}
-	total = total >> 2;
-	PORTD = tempD | (total << 2);
+	PORTC = cntavail;
 
     }
     return 0;
