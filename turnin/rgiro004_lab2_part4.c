@@ -40,7 +40,7 @@ int main(void) {
 	}
 
 	tempD = tempA + tempB + tempC;
-	tempD = tempD >> 2;
+	
 	PORTD = tempD | PORTD;
 	}
 	return 0;
