@@ -20,13 +20,9 @@ int main(void) {
 	unsigned char tmpA = 0x00;
     /* Insert your solution below */
     while (1) {
-	tmpA = PINA & 0xFF;
-	if(tmpA == 0x01){
-		tmpB = (tmpB & 0xFE) | 0x01;
-	} else {
-		tmpB = (tmpB & 0xFE) | 0x00;
-	}
-	PORTB = tmpB;
+	tmpA = PINA & 0x01;
+	tmpB = PINA & 0x02;
+	PORTB = tmpA & !tmpB;
 
     }
     return 0;

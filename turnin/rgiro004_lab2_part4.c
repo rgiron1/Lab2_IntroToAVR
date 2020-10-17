@@ -33,6 +33,9 @@ int main(void) {
 	if(total > 140){
 	tempD = 0x01;
 	}
+	if(total > 255){
+		total = 255;
+	}
 	if(tempA > tempC){
 	max = tempA;
 	min = tempC;
@@ -41,8 +44,14 @@ int main(void) {
 	min = tempA;
 	} 
 	diff = max - min;
-	if((diff) > 80 ){
+	if((diff > 80) && (total > 140){
+	tempD = 0x03;
+	} else if((diff > 80) && (total <= 140)){
 	tempD = 0x02;
+	} else if((diff <= 80) && (total > 140)){
+	tempD = 0x01;
+	} else {
+	tempD = 0x00;
 	}
 	total = total >> 2;
 	PORTD = tempD | (total << 2);
