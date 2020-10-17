@@ -42,15 +42,14 @@ int main(void) {
 	} 
 	diff = max - min;
 	if((total > 140)){
-	tempD = 0x01;
+	tempD = tempD | 0x01;
 	}
 	if((diff > 80)){
-	tempD = 0x02;
+	tempD = tempD | 0x02;
 	} else{
-	tempD = 0x01;
+	tempD = tempD | 0x01;
 	} 
-	total = total >> 2;
-	PORTD = tempD | (total << 2);
+	PORTD = tempD | total;
 	
     }
     return 0;
