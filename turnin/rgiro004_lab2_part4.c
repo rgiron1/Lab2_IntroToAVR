@@ -14,43 +14,33 @@
 
 int main(void) {
     /* Insert DDR and PORT initializations */
-	DDRA = 0x00; PORTA = 0xFF;
-	DDRB = 0x00; PORTA = 0xFF;
+	DDRA = 0x00; PORTA = 0xFF; 
+	DDRB = 0x00; PORTB = 0xFF;
 	DDRC = 0x00; PORTC = 0xFF;
-	DDRD = 0xFF; PORTD = 0x00;
-	
-    /* Insert your solution below */
+	DDRD = 0xFF; PORTD = 0x00; 
+
+	unsigned char tempA, tempB, tempC, tempD = 0x00;
+
     while (1) {
-	unsigned char tempA = PINA;
-	unsigned char tempB = PINB;
-	unsigned char tempC = PINC;
-	unsigned char tempD = 0x00;
-	unsigned char total;
-	unsigned char max;
-	unsigned char min;
-	unsigned char diff;
-	total = tempA + tempB + tempC;
-	if(total > 255){
-		total = 255;
+	tempA = PINA;
+	tempB = PINB;
+	tempC = PINC;
+  
+
+	if ((tempA + tempB + tempC) > 0x8C)
+		PORTD = PORTD | 0x01;
+
+	if (tempA > tempC) {
+		if ((tempA - tempC) > 0x50)  {
+			PORTD = PORTD | 0x02; }
 	}
-	if(tempA > tempC){
-	max = tempA;
-	min = tempC;
-	}else{
-	max = tempC;
-	min = tempA;
-	} 
-	diff = max - min;
-	if((total > 140)){
-	tempD = tempD | 0x01;
+	else {
+		if ((tempC - tempA) > 0x50) {
+			PORTD = PORTD | 0x02; }
 	}
-	if((diff > 80)){
-	tempD = tempD | 0x02;
-	} else{
-	tempD = tempD | 0x01;
-	} 
-	PORTD = tempD | total;
-	
-    }
-    return 0;
+
+	tempD = tempA + tempB + tempC;
+	PORTD = tempD | PORTD;
+	}
+	return 0;
 }
