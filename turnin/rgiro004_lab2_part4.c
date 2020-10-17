@@ -30,9 +30,6 @@ int main(void) {
 	unsigned char min;
 	unsigned char diff;
 	total = tempA + tempB + tempC;
-	if(total > 140){
-	tempD = 0x01;
-	}
 	if(total > 255){
 		total = 255;
 	}
@@ -44,7 +41,7 @@ int main(void) {
 	min = tempA;
 	} 
 	diff = max - min;
-	if((diff > 80) && (total > 140){
+	if((diff > 80) && (total > 140)){
 	tempD = 0x03;
 	} else if((diff > 80) && (total <= 140)){
 	tempD = 0x02;
@@ -55,7 +52,7 @@ int main(void) {
 	}
 	total = total >> 2;
 	PORTD = tempD | (total << 2);
-
+	
     }
     return 0;
 }

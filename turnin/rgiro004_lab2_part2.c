@@ -20,7 +20,7 @@ int main(void) {
     /* Insert your solution below */
     while (1) {
 	 tmpA = PINA;
-	tmpC = 4;
+	unsigned char tmpC = 4;
 	if(tmpA & 0x01){
 		tmpC--;
 	} else if(tmpA & 0x02){

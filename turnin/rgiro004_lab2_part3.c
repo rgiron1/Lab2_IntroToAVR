@@ -17,20 +17,20 @@ int main(void) {
 	DDRA = 0x00; PORTA = 0xFF;
 	DDRC = 0xCC; PORTC = 0xFF;
 	unsigned char tmpA = 0x00;
-	unsigned char tmpC;
+	unsigned char tmpC = 0;
 	unsigned char full = 0;
     /* Insert your solution below */
     while (1) {
 	tmpA = PINA;
 	tmpC = 4;
 
-	if(PINA & 0x01){
-		tempC--;
-	} else if(PINA & 0x02){
+	if(tmpA & 0x01){
 		tmpC--;
-	} else if(PINA & 0x04){
+	} else if(tmpA & 0x02){
 		tmpC--;
-	} else if(PINA & 0x08){
+	} else if(tmpA & 0x04){
+		tmpC--;
+	} else if(tmpA & 0x08){
 		tmpC--;
 	}
 	PORTC = tmpC;
