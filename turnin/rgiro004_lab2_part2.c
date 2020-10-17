@@ -23,11 +23,14 @@ int main(void) {
 	unsigned char tmpC = 4;
 	if(tmpA & 0x01){
 		tmpC--;
-	} else if(tmpA & 0x02){
+	}
+	 if(tmpA & 0x02){
 		tmpC--;
-	} else if(tmpA & 0x04){
+	}
+	if(tmpA & 0x04){
 		tmpC--;
-	} else if(tmpA & 0x08){
+	}
+	if(tmpA & 0x08){
 		tmpC--;
 	}
 	PORTC = tmpC;

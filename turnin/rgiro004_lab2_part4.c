@@ -41,15 +41,14 @@ int main(void) {
 	min = tempA;
 	} 
 	diff = max - min;
-	if((diff > 80) && (total > 140)){
-	tempD = 0x03;
-	} else if((diff > 80) && (total <= 140)){
-	tempD = 0x02;
-	} else if((diff <= 80) && (total > 140)){
+	if((total > 140)){
 	tempD = 0x01;
-	} else {
-	tempD = 0x00;
 	}
+	if((diff > 80)){
+	tempD = 0x02;
+	} else{
+	tempD = 0x01;
+	} 
 	total = total >> 2;
 	PORTD = tempD | (total << 2);
 	
